@@ -1,0 +1,20 @@
+<%- include admin-header %>
+	<form method="post" action="/admin/menu_edit" enctype="multipart/form-data">
+		<div class="form-group">
+            <p><input class="form-control" type="hidden" name="_id" value="<%- data._id %>" ></p>
+			<p><input class="form-control" type="text" name="name" value="<%- data.name %>" ></p>
+            <p><img width=100 height=100 src="/<%= data.img_src %>" alt=""/></p>
+            <div class="form-group">
+                <label for="menu-picture">上传图片</label>
+                <input type="file" id="menu-picture" name="menu-picture">
+                <p class="help-block"></p>
+            </div>
+            <p><input class="form-control" type="text" name="food-type" value="<%- data.type %>" ></p>
+            <p><input class="form-control" type="text" name="sub-name" value="<%- data.sub_name %>" ></p>
+            <p><input class="form-control" type="text" name="prev-price" value="<%- data.prev_price %>" ></p>
+            <p><input class="form-control" type="text" name="now-price" value="<%- data.now_price %>" ></p>
+            <p><%- data.time.date %></p>
+			<p><button class="btn btn-default" type="submit">提交</button></p>
+		</div>
+	</form>
+<%- include admin-footer %>

@@ -1,0 +1,60 @@
+<%- include ../admin-header %>
+	<form action="/admin/question/delete" method="post">
+		<div>
+			<a class="btn btn-success" href="/admin/question/edit?parent_id=<%- parent_id %>"><span class="glyphicon glyphicon-plus"></span>新增</a>
+			<button class="btn btn-primary" type="submit">删除</button>
+			<a class="btn btn-primary" href="/question/<%= parent_id %>" target="_blank">预览问卷</a>
+		</div>
+		<table class="table table-condensed">
+			<thead>
+				<tr>
+					<th></th>
+					<th>题目名称</th>
+					<th>题目类型</th>
+					<th>题目选项</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% if(question){ %>
+					<% question.forEach(function(item,i){ %>
+						<% item.content = item.content.split(","); %>
+						<tr>
+							<td><input type="checkbox" name="checkedQuestion" value="<%- item._id %>"></td>
+							<td><%= item.title %></td>
+							<% if(item.type == 0){ %>
+								<td>单选</td>
+								<td>
+								<% for(var j=0,l=item.content.length;j<l;j++){ %>
+									<%= j+1 %>. <%= item.content[j] %><br>
+								<% } %>
+								</td>
+
+							<% }else if(item.type == 1){ %>
+								<td>多选</td>
+								<td>
+								<% for(var j=0,l=item.content.length;j<l;j++){ %>
+									<%= j+1 %>. <%= item.content[j] %><br>
+								<% } %>
+								</td>
+							<% }else if(item.type == 2){ %>
+								<td>问答</td>
+								<td>
+								</td>
+							<% } %>
+
+							<td><a href="" class="btn btn-primary">查看报表</a>
+							<a href="/admin/question/edit?parent_id=<%- item.questionnaireId %>&q_id=<%- item._id %>" class="btn btn-primary">编辑</a></td>
+
+						</tr>
+					<% }) %>
+				<% } else{ %>
+
+				<% } %>
+			</tbody>
+		</table>
+	</form>
+	<script>
+		// var id_arr = document.querySelectorAll()
+	</script>
+<%- include ../admin-footer %>

@@ -1,0 +1,291 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 9, ../sass/screen.scss */
+body {
+  font-family: "\5FAE\8F6F\96C5\9ED1";
+}
+
+/* line 12, ../sass/screen.scss */
+.panel {
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+/* line 18, ../sass/screen.scss */
+.panel-heading {
+  border-radius: 0;
+}
+
+/* line 22, ../sass/screen.scss */
+.nav-pills > li > a {
+  border-radius: 0;
+}
+
+/* line 27, ../sass/screen.scss */
+footer {
+  margin-bottom: 80px;
+}
+
+/* line 30, ../sass/screen.scss */
+footer p {
+  text-align: center;
+}
+
+/* line 34, ../sass/screen.scss */
+.panel.shopping-cart {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 0px;
+}
+/* line 39, ../sass/screen.scss */
+.panel.shopping-cart .panel-heading {
+  display: none;
+}
+/* line 42, ../sass/screen.scss */
+.panel.shopping-cart .panel-body {
+  display: none;
+}
+
+/* line 47, ../sass/screen.scss */
+.slogen {
+  background-size: cover;
+  background-color: green;
+  height: 190px;
+  background: url(../images/front/slogen_bg.jpg) center center;
+}
+/* line 52, ../sass/screen.scss */
+.slogen .container {
+  padding-top: 60px;
+}
+
+/* line 58, ../sass/screen.scss */
+.nav-container ul li.active a {
+  background-color: aliceblue;
+  border-left: 2px #337ab7 solid;
+  color: #222222;
+}
+/* line 64, ../sass/screen.scss */
+.nav-container ul li {
+  width: 100%;
+}
+
+/* line 69, ../sass/screen.scss */
+.food-container {
+  padding: 0 !important;
+}
+/* line 71, ../sass/screen.scss */
+.food-container .panel-body {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+/* line 75, ../sass/screen.scss */
+.food-container .panel {
+  margin-bottom: 0;
+}
+
+/* line 80, ../sass/screen.scss */
+.food-lists-container {
+  padding: 0;
+}
+
+/* line 84, ../sass/screen.scss */
+.nav-container {
+  border-width: 0;
+  padding: 0;
+}
+
+/* line 89, ../sass/screen.scss */
+.menu-food {
+  margin-top: 8px;
+}
+/* line 91, ../sass/screen.scss */
+.menu-food .row {
+  display: -webkit-box;
+  margin: 0 -7px;
+  border-bottom: 1px solid #dfdfdf;
+}
+/* line 96, ../sass/screen.scss */
+.menu-food:last-child .row {
+  border-bottom-width: 0;
+}
+
+/* line 101, ../sass/screen.scss */
+.food-pic {
+  width: 70px;
+  height: 70px;
+  padding: 0;
+}
+/* line 105, ../sass/screen.scss */
+.food-pic img {
+  width: 70px;
+  height: 70px;
+}
+
+/* line 111, ../sass/screen.scss */
+.menu-food-detail {
+  -webkit-box-flex: 1;
+  padding: 0;
+  padding-left: 6px;
+}
+
+/* line 117, ../sass/screen.scss */
+.food-title {
+  font-size: 12px;
+  margin-top: 0;
+}
+/* line 120, ../sass/screen.scss */
+.food-title strong {
+  font-weight: normal;
+}
+
+/* line 125, ../sass/screen.scss */
+.menu-food-add-to-cart {
+  border-radius: 25px;
+  background-color: #337ab7;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+}
+/* line 131, ../sass/screen.scss */
+.menu-food-add-to-cart span {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+/* line 136, ../sass/screen.scss */
+.menu-food-add-to-cart em {
+  display: none;
+}
+
+/* line 141, ../sass/screen.scss */
+.notice-board {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  /* line 146, ../sass/screen.scss */
+  body {
+    padding-bottom: 30px;
+    background: url(../images/front/bg_2.png) #f7f7f7;
+  }
+
+  /* line 150, ../sass/screen.scss */
+  [class*="col-"] {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  /* line 154, ../sass/screen.scss */
+  .form-control {
+    height: 33px;
+    width: 35px !important;
+  }
+
+  /* line 158, ../sass/screen.scss */
+  .text-price {
+    color: red;
+  }
+
+  /* line 161, ../sass/screen.scss */
+  .navbar-inverse {
+    opacity: 0.5;
+  }
+
+  /* line 164, ../sass/screen.scss */
+  .menu-food {
+    background: #fff;
+  }
+  /* line 166, ../sass/screen.scss */
+  .menu-food:last-child .row {
+    border-bottom-width: 1px;
+  }
+
+  /* line 170, ../sass/screen.scss */
+  .nav-container {
+    padding: 15px;
+  }
+
+  /* line 174, ../sass/screen.scss */
+  .nav-container ul li {
+    width: auto;
+  }
+
+  /* line 178, ../sass/screen.scss */
+  .nav-container ul li.active a {
+    background-color: #337ab7;
+    color: #fff;
+  }
+
+  /* line 182, ../sass/screen.scss */
+  .food-container .panel {
+    margin-bottom: 15px;
+  }
+
+  /* line 185, ../sass/screen.scss */
+  .menu-food-detail {
+    padding-left: 2px;
+    position: relative;
+  }
+  /* line 190, ../sass/screen.scss */
+  .menu-food-detail .menu-food-price {
+    bottom: 0;
+  }
+  /* line 194, ../sass/screen.scss */
+  .menu-food-detail .menu-food-add-to-cart {
+    bottom: 0;
+    right: 0;
+    border: none;
+    border-radius: 0px;
+    width: auto;
+    padding: 0 5px;
+  }
+  /* line 202, ../sass/screen.scss */
+  .menu-food-detail .menu-food-add-to-cart span {
+    top: 0;
+  }
+  /* line 205, ../sass/screen.scss */
+  .menu-food-detail .menu-food-add-to-cart em {
+    display: inline-block;
+    color: #fff;
+    font-family: "\5FAE\8F6F\96C5\9ED1";
+    font-style: normal;
+    position: relative;
+    top: -3px;
+  }
+  /* line 214, ../sass/screen.scss */
+  .menu-food-detail .menu-food-add-to-cart:link, .menu-food-detail .menu-food-add-to-cart:visited, .menu-food-detail .menu-food-add-to-cart:hover, .menu-food-detail .menu-food-add-to-cart:active {
+    background-color: #337ab7;
+  }
+
+  /* line 218, ../sass/screen.scss */
+  .food-order-total-price {
+    font-size: 36px;
+  }
+  /* line 220, ../sass/screen.scss */
+  .food-order-total-price small {
+    font-size: 12px;
+  }
+
+  /* line 224, ../sass/screen.scss */
+  .panel.shopping-cart {
+    right: 0;
+    width: 350px;
+  }
+  /* line 227, ../sass/screen.scss */
+  .panel.shopping-cart .panel-heading {
+    display: block;
+  }
+  /* line 230, ../sass/screen.scss */
+  .panel.shopping-cart .panel-body {
+    display: block;
+  }
+
+  /* line 235, ../sass/screen.scss */
+  .notice-board {
+    display: block;
+  }
+}

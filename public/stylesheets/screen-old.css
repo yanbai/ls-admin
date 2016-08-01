@@ -1,0 +1,75 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 7, ../sass/screen.scss */
+body {
+  padding-bottom: 30px;
+  background: url(../images/front/bg_2.png) #f7f7f7;
+}
+
+/* line 12, ../sass/screen.scss */
+[class*="col-"] {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+/* line 17, ../sass/screen.scss */
+.text-price {
+  color: red;
+}
+
+/* line 21, ../sass/screen.scss */
+.slogen {
+  background-size: cover;
+  background-color: green;
+  height: 190px;
+  background: url(../images/front/slogen_bg.jpg) center center;
+}
+/* line 26, ../sass/screen.scss */
+.slogen .container {
+  padding-top: 60px;
+}
+
+/* line 31, ../sass/screen.scss */
+.navbar-inverse {
+  opacity: 0.5;
+}
+
+/* line 35, ../sass/screen.scss */
+.menu-food {
+  background: #fff;
+  border: 1px solid #dfdfdf;
+}
+
+/* line 40, ../sass/screen.scss */
+.menu-food-detail {
+  padding-left: 2px;
+  position: relative;
+}
+/* line 47, ../sass/screen.scss */
+.menu-food-detail .menu-food-price {
+  bottom: 0;
+}
+/* line 51, ../sass/screen.scss */
+.menu-food-detail .menu-food-add-to-cart {
+  bottom: 0;
+  right: 0;
+}
+
+/* line 58, ../sass/screen.scss */
+.food-order-total-price {
+  font-size: 36px;
+}
+/* line 60, ../sass/screen.scss */
+.food-order-total-price small {
+  font-size: 12px;
+}
+
+/* line 67, ../sass/screen.scss */
+.shopping-cart {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 450px;
+}

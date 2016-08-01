@@ -1,0 +1,23 @@
+<%- include admin-header %>
+	<form method="post" enctype="multipart/form-data">
+		<div class="form-group">
+			<label for="name">菜品名字：</label>
+			<input class="form-control" id="name" type="text" name="name" />
+            <div class="form-group">
+                <label for="exampleInputFile">上传图片</label>
+                <input type="file" id="exampleInputFile" name="img">
+                <p class="help-block">Example block-level help text here.</p>
+            </div>
+            <label for="sub-name">副标题：</label>
+            <input class="form-control" id="sub-name" type="text" name="sub-name" />
+            <label for="type">分类：</label>
+            <input class="form-control" id="type" type="text" name="type" />
+            <label for="prev-price">原价：</label>
+            <input class="form-control" id="prev-price" type="text" name="prev-price" />
+            <label for="now-price">现价：</label>
+            <input class="form-control" id="now-price" type="text" name="now-price" />
+
+			<button class="btn btn-default" type="submit">发表</button>
+		</div>
+	</form>
+<%- include admin-footer %>

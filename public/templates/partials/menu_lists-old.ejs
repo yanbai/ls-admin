@@ -1,0 +1,64 @@
+    <div class="main">
+        <div class="slogen">
+            <div class="container">
+                <div class="logo pull-left"><img src="../images/front/logo.png" width=100 alt=""></div>
+            </div>
+        </div>
+        <div class="container theme-showcase">
+            <div class="row">
+                <div class="col-md-8">
+                    <ul class="nav nav-pills">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <ul class="nav nav-pills">
+                                    <li role="presentation" ng-repeat="type in menu_by_type"><a href="#">{{type.type}}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </ul>
+                    <div class="panel panel-default" ng-repeat="type in menu_by_type">
+                        <div class="panel-body">
+                            <div class="page-header">
+                                <h3>{{type.type}} <small></small></h3>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6" ng-repeat="menu in type.data">
+                                    <div class="menu-food container">
+                                        <div class="row">
+                                            <div class="col-md-4 col-xs-6"><img class="img-responsive" ng-src="{{menu.img_src}}" alt=""></div>
+                                            <div class="col-md-8 col-xs-6 menu-food-detail">
+                                                <h4><strong>{{ menu.name }}</strong></h4>
+                                                <p><small>销量 {{ menu.sale_count }}</small></p>
+                                                <p class="text-left">
+                                                    <span class="menu-food-price">{{ menu.prev_price }}元</span>
+                                                </p>
+                                                <p class="text-right">
+                                                    <a class="btn btn-default menu-food-add-to-cart" ng-click="addCart(menu._id, $event)" href="#" role="button">
+                                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加到购物车
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">商家公告</h3>
+                        </div>
+                        <div class="panel-body">
+                            1、本店推荐“饿了么”网上订餐！饭口较忙，电话经常占线，建议您通过“饿了么”网上下单，本店优先配送网络订单！2、首次订餐用户，“饿了么”客服会电话联系您确认订单（021区号），订餐后请确保您的手机通畅及铃声状态，以方便外送员能及时联系到您！3、美食制作及配送均需要时间，为了不影响您的及时用餐，请大家提前一小时预订，避开订餐高峰期！“饿了么”全国客服电话：10105757
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <cart-directive></cart-directive>
+
+        
+    </div>
+    

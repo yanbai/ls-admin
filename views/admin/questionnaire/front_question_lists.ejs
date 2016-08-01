@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<title><%= quiz.title %></title>
+</head>
+<link href="/stylesheets/normalize.css" rel="stylesheet">
+<link href="/stylesheets/bootstrap-v3.3.6.css" rel="stylesheet">
+<script src="/js/jquery/dist/jquery.min.js"></script>
+<script src="/js/angular/angular.js"></script>
+<style type="text/css">
+	body{
+		background: #dfdfdf;
+	}
+	.question_container{
+		background-color: #fff;
+		border-radius: 10px;
+		margin: 20px;
+		padding: 10px;
+	}
+	
+
+	.question_container .go_back{
+		display: block;
+		text-align: center;
+		margin-left: -10px;
+	}
+	
+	.question_content{
+		border-top: 1px dashed #fff;
+		color: #76190d;
+		font-size: 16px;
+		padding: 15px;
+	}
+	
+
+	.next_btn {
+		border-radius: 5px;
+		background-color: #b62613;
+		-moz-box-shadow: 0 1px 2px #531007;
+		-webkit-box-shadow: 0 1px 2px #531007;
+		box-shadow: 0 1px 2px #531007;
+		padding: 10px;
+		color: #fff;
+		width: 100%;
+		margin: 20px auto;
+		display: block;
+		text-align: center;
+		font-size: 20px;
+		position: relative;
+		border: none;
+	}
+
+	.question_container .do h6 {
+	  border: none;
+	  text-shadow: none;
+	  color: #76190d;
+	  margin: 10px 0;
+	}
+	.question_container h6 {
+	  color: #fff;
+	  text-align: center;
+	  font-size: 18px;
+	  font-weight: bold;
+	  line-height: 40px;
+	  border-bottom: 1px dashed #C30;
+	  text-shadow: 1px 2px #C00;
+	}
+
+	.form-item {
+	  margin-bottom: 10px;
+	}
+
+	.questionnaire_radio, .questionnaire_checkbox {
+	  display: block;
+	  margin: 0;
+	  text-align: left;
+	  border: 1px solid #fe9524;
+	  background: #fde0af;
+	}
+	.questionnaire_radio, .questionnaire_checkbox {
+	  border-radius: 5px;
+	  background-color: #eee;
+	  border: 1px solid #ddd;
+	  padding: 5px 10px;
+	  text-align: left;
+	  display: block;
+	}
+
+	.ques {
+		display: none;
+	}
+
+	.ques.ques_1{
+		display: block;
+	}
+
+	.next_btn{
+		text-decoration: none;
+	}
+</style>
+<body>
+	<div class="question_container">
+		<p><img src="<%= user_info.headimgurl.replace(/\/\d*$/,"/46") %>"></p>
+		<p><%= user_info.nickname %> 你好</p>
+
+		<div class="question_content do">
+			<form id="form" action="/question/save_the_questionnaire" method="post">
+				<input type="hidden" name="wei_user_info" value="<%= JSON.stringify(user_info) %>">
+			    <input type="hidden" name="questionnaire_id" value="<%= quiz._id %>">
+				<% question.forEach(function(item,i){ %>
+				<% item.content = item.content.split(","); %>
+			    <div class="ques ques_<%= i+1 %>">
+				    <h6>第<%= i+1 %>题：<%= item.title %></h6>
+				    <p class="form-item cf"></p>
+			        <div class="form-item cf">
+			        	<% if(item.type == 0){ %>
+							<% for(var j=0,l=item.content.length;j<l;j++){ %>
+								<label class="questionnaire_radio"><input type="radio" name="<%= item._id %>" value="<%= item.content[j] %>$$<%= item.title %>$$<%= item.type %>" /> <%= item.content[j] %></label><br>
+							<% } %>
+						<% }else if(item.type == 1){ %>
+							<% for(var j=0,l=item.content.length;j<l;j++){ %>
+								<label class="questionnaire_checkbox"><input type="checkbox" name="<%= item._id %>" value="<%= item.content[j] %>$$<%= item.title %>$$<%= item.type %>" /> <%= item.content[j] %></label><br>
+							<% } %>
+						<% }else if(item.type == 2){ %>
+							<textarea name="<%= item._id %>" data-title="<%= item.title %>" id="" class="form-control" rows="12"></textarea>
+						<% } %>
+			        </div>
+
+					<% if(question.length != i+1 && i != 0){ %>
+			        	<a href="#" class="next_btn" onclick="showQuestion('ques',<%= i+2 %>,{type:'forward'})">下一题</a>
+			        	<a href="#" class="glyphicon glyphicon-chevron-left go_back" aria-hidden="true" onclick="showQuestion('ques',<%= i %>,{type:'back'})">上一题</a>
+					<% }else if(i == 0){ %>
+			        	<a href="#" class="next_btn" onclick="showQuestion('ques',<%= i+2 %>,{type:'forward'})">下一题</a>
+					<% }else{ %>
+						<input class="next_btn" id="submit" type="submit" value="回答结束">
+						<a href="#" class="glyphicon glyphicon-chevron-left go_back" aria-hidden="true" onclick="showQuestion('ques',<%= i %>,{type:'back'})">上一题</a>
+					<% } %>
+				</div>
+			    <% }) %>
+			</form>
+		</div>
+		
+
+	</div>
+	<script type="text/javascript">
+		function showQuestion (pre,id,option){
+			var type = option.type;
+			if(type == "forward"){
+				if(isFormSelected(pre,id,option)){
+					$("."+pre).hide();
+					$("."+pre+"_"+id).show();
+				}else{
+					alert("请填写问卷");
+				}
+			}else{
+				$("."+pre).hide();
+				$("."+pre+"_"+id).show();
+			}
+		}
+
+		function isFormSelected(pre,id){
+			var id = id-1;
+			if($("."+pre+"_"+id).find('input[type="checkbox"]:checked').length>0 || $("."+pre+"_"+id).find('input[type="radio"]:checked').length>0){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		$("#form").submit(function(){
+			$("textarea").each(function(){
+				var title = $(this).attr("data-title");
+				$(this).val($(this).val()+"$$"+title+"$$2");
+				console.log($(this).val());
+			})
+		})
+	</script>
+</body>
+</html>

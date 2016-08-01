@@ -1,0 +1,41 @@
+<%- include ../admin-header %>
+	<div>
+		<a class="btn btn-success" href="/admin/questionnaire/edit"><span class="glyphicon glyphicon-plus"></span>新增</a>
+	</div>
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th>问卷名称</th>
+				<th>开始日期</th>
+				<th>结束日期</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		<% if(quizes){ %>
+			<% quizes.forEach(function(item,i){ %>
+				<tr>
+					<td><a href="/admin/question/list/<%= item._id %>"><%= item.title %></a></td>
+					<td><%= item.startTime.day %></td>
+					<td><%= item.endTime.day %></td>
+					<td>
+						<a class="btn btn-primary" href="/admin/question/list/<%= item._id %>">题目管理</a>
+						<a class="btn btn-primary" href="/question/<%= item._id %>" target="_blank">预览问卷</a>
+						<a class="btn btn-primary" href="/admin/question/answer_by_questionnaire?questionnaire_id=<%= item._id %>">查看报表</a>
+						<a href="#" onclick='alertAddress("<%= appid %>","<%= item._id %>")'>查看问卷地址</a>
+					</td>
+
+				</tr>
+			<% }) %>
+		<% } else{ %>
+
+		<% } %>
+		</tbody>
+	</table>
+	<script>
+		function alertAddress(appid,q_id){
+			var str = "https://open.weixin.qq.com/connect/oauth2/authorize?appid="+appid+"&redirect_uri=http%3A%2F%2Fleungsi.duapp.com%2Foauth_response&response_type=code&scope=snsapi_userinfo&state="+q_id+"#wechat_redirect";
+			prompt("请复制该地址",str);
+		}
+	</script>
+<%- include ../admin-footer %>

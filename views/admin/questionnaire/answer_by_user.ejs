@@ -1,0 +1,33 @@
+<%- include ../admin-header %>
+	<ul class="nav nav-tabs" role="tablist" style="margin-bottom:20px">
+		<li role="presentation"><a href="/admin/question/answer_by_questionnaire?questionnaire_id=<%= questionnaireId %>" aria-controls="by_question" role="tab" data-toggle="tab">by question</a></li>
+		<li role="presentation" class="active"><a href="#by_user" aria-controls="by_user" role="tab" data-toggle="tab">by user</a></li>
+	</ul>
+
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="by_user">
+			<% answer.forEach(function(item,i){ %>
+			<% item.wei_user_info = JSON.parse(item.wei_user_info); %>
+				<table class="table table-bordered">
+					<caption><img src="<%= item.wei_user_info.headimgurl.replace(/\/\d*$/,"/46") %>" ><%= item.wei_user_info.nickname %></caption>
+					<thead>
+						<tr>
+							<th width="30%">题目</th>
+							<th>答案</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<% item.answer.forEach(function(a,i){ %>
+						<tr>
+							<td><%= a.quizTitle %></td>
+							<td><%= a.quizAnswer %></td>
+						</tr>
+						<% }) %>
+					</tbody>
+				</table>
+
+			<% }) %>
+		</div>
+	</div>
+<%- include ../admin-footer %>

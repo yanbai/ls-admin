@@ -1,0 +1,38 @@
+<%- include ../admin-header %>
+	<div class="bs-example bs-example-tabs">
+		<ul class="nav nav-tabs" role="tablist" style="margin-bottom:20px">
+			<li role="presentation" class="active"><a href="#by_question" aria-controls="by_question" role="tab" data-toggle="tab">by question</a></li>
+			<li role="presentation"><a href="/admin/question/answer_by_user?questionnaire_id=<%= questionnaireId %>" aria-controls="by_user" role="tab" data-toggle="tab">by user</a></li>
+		</ul>
+
+
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="by_question">
+				<% for(var item in data){ %>
+
+					<table class="table table-bordered">
+						<caption><%= data[item].quizTitle %></caption>
+						<thead>
+							<tr>
+								<th width="30%">选项</th>
+								<th width="30%">小计</th>
+								<th>比例</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<% for(var i in data[item]["quizAnswer"]){ %>
+							<tr>
+								<td><%= i %></td>
+								<td><%= data[item]["quizAnswer"][i] %></td>
+								<td><%= ( data[item]["quizAnswer"][i] / data[item]["__all__"] * 100 ) + "%" %></td>
+							</tr>
+							<% } %>
+						</tbody>
+					</table>
+
+				<% } %>
+			</div>
+		</div>
+	</div>
+<%- include ../admin-footer %>

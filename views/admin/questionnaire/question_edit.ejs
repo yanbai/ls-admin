@@ -1,0 +1,72 @@
+<%- include ../admin-header %>
+	<div class="row">
+		<div class="col-md-4">
+			<form method="post" id="question">
+				<div class="form-group">
+					<label for="title" class="control-label">题目名称</label>
+					<div class="">
+						<input class="form-control" id="title" type="text" name="title" value="<%- q.title %>" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="type" class="control-label">题目类型</label>
+					<div class="">
+						<select class="form-control" id="type" name="type" value="<%- q.type %>" />
+							<option <% if(q.type == 0){ %> selected <% } %> value=0>单选</option>
+		  					<option <% if(q.type == 1){ %> selected <% } %> value=1>多选</option>
+		  					<option <% if(q.type == 2){ %> selected <% } %> value=2>问答</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="question-select-part <% if(q.type == 2){ %> hide <% } %>">
+					<label class="control-label">选项名称(请按顺序填写，至少填写2项)</label>
+					<% q.content = q.content.split(",") %>
+					<% q.content.forEach(function(it,i){ %>
+					<div class="form-group">
+						<div class="">
+							<input class="form-control txt" id="q_<%- i+1 %>" type="text" name="q_<%- i+1 %>" value="<%- it %>" />
+						</div>
+					</div>
+					<% }) %>
+					<% if(q.content.length < 4){ %>
+						<% for(var i=q.content.length+1,l=4;i<=l;i++){ %>
+						<div class="form-group">
+							<div class="">
+								<input class="form-control txt" id="q_<%= i %>" type="text" name="q_<%= i %>" />
+							</div>
+						</div>
+						<% } %>	
+					<% } %>
+				</div>
+				
+				<input type="hidden" name="content" id="content" />
+				<div class="form-group">
+				    <button type="submit" class="btn btn-primary">确认</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+		document.getElementById("question").onsubmit = function(){
+			var txt_ele = document.querySelectorAll(".txt");
+			var txt = [];
+			for(var i=0,l=txt_ele.length;i<l;i++){
+				if(txt_ele[i].value != ''){
+					txt.push(txt_ele[i].value);
+				}
+			}
+			document.getElementById("content").value = txt;
+		}
+
+		$("#type").change(function(){
+			if($(this).val() == 0 || $(this).val() == 1){
+				$(".question-select-part").removeClass("hide");
+			}else if($(this).val() == 2){
+				document.getElementById("content").value = "";
+				$(".question-select-part").addClass("hide");
+			}
+		})
+
+	</script>
+<%- include ../admin-footer %>

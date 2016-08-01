@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+	<title>kk</title>
+</head>
+<link href="/stylesheets/normalize.css" rel="stylesheet">
+<link href="/stylesheets/bootstrap-v3.3.6.css" rel="stylesheet">
+<script src="/js/angular/angular.js"></script>
+<script src="/js/controller.js"></script>
+
+<!--<script src="/js/app.js"></script>-->
+<style type="text/css">
+	body{
+		background: #dfdfdf;
+	}
+	.question_container{
+		background-color: #fff;
+		border-radius: 10px;
+		margin: 20px;
+		padding: 10px;
+	}
+	
+
+	.question_container .go_back{
+		display: block;
+		text-align: center;
+		margin-left: -10px;
+	}
+	
+	.question_content{
+		border-top: 1px dashed #fff;
+		color: #76190d;
+		font-size: 16px;
+		padding: 15px;
+	}
+	
+
+	.next_btn {
+		border-radius: 5px;
+		background-color: #b62613;
+		-moz-box-shadow: 0 1px 2px #531007;
+		-webkit-box-shadow: 0 1px 2px #531007;
+		box-shadow: 0 1px 2px #531007;
+		padding: 10px;
+		color: #fff;
+		width: 100%;
+		margin: 20px auto;
+		display: block;
+		text-align: center;
+		font-size: 20px;
+		position: relative;
+		border: none;
+	}
+
+	.question_container .do h6 {
+	  border: none;
+	  text-shadow: none;
+	  color: #76190d;
+	  margin: 10px 0;
+	}
+	.question_container h6 {
+	  color: #fff;
+	  text-align: center;
+	  font-size: 18px;
+	  font-weight: bold;
+	  line-height: 40px;
+	  border-bottom: 1px dashed #C30;
+	  text-shadow: 1px 2px #C00;
+	}
+
+	.form-item {
+	  margin-bottom: 10px;
+	}
+
+	.questionnaire_radio, .questionnaire_checkbox {
+	  display: block;
+	  margin: 0;
+	  text-align: left;
+	  border: 1px solid #fe9524;
+	  background: #fde0af;
+	}
+	.questionnaire_radio, .questionnaire_checkbox {
+	  border-radius: 5px;
+	  background-color: #eee;
+	  border: 1px solid #ddd;
+	  padding: 5px 10px;
+	  text-align: left;
+	  display: block;
+	}
+
+	.ques {
+		display: none;
+	}
+
+	.ques.ques_1{
+		display: block;
+	}
+
+	.next_btn{
+		text-decoration: none;
+	}
+</style>
+<body>
+	<div class="question_container" ng-app="phonecatApp" >
+		<div class="question_content do" ng-controller="PhoneListCtrl">
+			<div ng-repeat="q in q_lists">
+			    <h6>{{q.name}}</h6>
+			    <p class="form-item cf"></p>
+			    <form id="form" action="" method="post" onsubmit="return checkForm();">
+			    	<input name="next_id" value="-1" type="hidden">
+			    	<input name="question_id" value="" type="hidden">
+
+			        <div class="form-item cf">
+			        	<div ng-if="q.type == 0">
+							<label ng-repeat="i in q.content" class="radio"><input type="radio" name="{{ q._id }}" /> {{ i }}</label><br>
+							
+						</div>
+						<div ng-if="q.type == 1">
+							<label ng-repeat="i in q.content" class="checkbox"><input type="checkbox" name="{{ q._id }}" /> {{ i }}</label><br>
+							
+						</div>
+			        </div>
+					{{$length}}
+			        <a href="" class="next_btn" ng-hide="{{ $index==0 }}">上一题</a>
+			        <a href="" class="next_btn">下一题</a>
+			    </form>
+			</div>
+		</div>
+		<input class="next_btn" id="submit" type="submit" value="下一题">
+
+	</div>
+
+</body>
+</html>

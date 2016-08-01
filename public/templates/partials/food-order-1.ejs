@@ -1,0 +1,77 @@
+<div class="main">
+    <div class="slogen">
+        <div class="container">
+            <div class="logo pull-left"><img src="../img/logo.png" width=100 alt=""></div>
+        </div>
+    </div>
+    <div class="container theme-showcase">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2>订单详情</h2>
+                        <a ng-href="/shop/59095" href="/shop/59095">&lt; 返回商家修改</a>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>商品</th>
+                                    <th width=40%>份数</th>
+                                    <th>小计（元）</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="food in carts">
+                                    <th scope="row">{{food.name}}</th>
+                                    <td>
+                                        <number-calculater-directive></number-calculater-directive>
+                                    </td>
+                                    <td>￥{{food.now_price}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="clearfix">
+                            <span class="pull-left"><small>配送费</small></span>
+                            <span class="pull-right"><small>￥2</small></span>
+                        </div>
+                        <div class="food-order-total-price text-right text-price">
+                            <strong><small>￥</small>{{totalPrice.value}}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <form action="">
+                            <h4><strong>收货地址</strong></h4>
+                            <a href="">添加新地址</a>
+                            
+
+                            <h4><strong>付款方式</strong></h4>
+                            <div class="radio">
+                                <label for="checkout-pay"><input checked type="radio" name="food-order-pay" id="checkout-pay" value="1">网上支付</label>
+                            </div>
+                            <div class="radio">
+                                <label for="hand-by-hand-pay"><input type="radio" name="food-order-pay" id="hand-by-hand-pay" value="2">到付</label>
+                            </div>
+                            <h4><strong>其他信息</strong></h4>
+                            <div class="form-group">
+                                <label for="">发票抬头</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">订单备注</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-info">Submit</button>
+                        </form>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
