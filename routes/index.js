@@ -254,9 +254,9 @@ router.post('/admin/add_menu', upload.single("img"), function(req, res, next) {
         name: req.body.name,
         subName: req.body['sub-name'],
         type: req.body.type,
-        saleCount: 0 + 0,
-        prevPrice: req.body['prev-price'] + 0,
-        nowPrice: req.body['now-price'] + 0,
+        saleCount: parseFloat(0),
+        prevPrice: parseFloat(req.body['prev-price']),
+        nowPrice: parseFloat(req.body['now-price']),
         adminId: currentUser['_id'],
         imgSrc: fileSrc
     });
